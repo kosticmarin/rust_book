@@ -20,7 +20,7 @@ fn change(s: &mut String) {
     s.push_str(", world");
 }
 
-// wont compile if it is a &String instead return String owned!!
+// won't compile if it is a &String instead return String owned!!
 #[warn(dead_code)]
 fn dangle() -> String {
     let s = String::from("hello");
