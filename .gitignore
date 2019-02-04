@@ -1,5 +1,5 @@
 RustBook.code-workspace
 
-*/target/
-*/Cargo.lock
+**/target/
+**/Cargo.lock
 **/*.rs.bk
