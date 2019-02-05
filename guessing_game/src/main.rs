@@ -14,7 +14,7 @@ fn main() {
         let mut guess = String::new();
         input_handle
             .read_line(&mut guess)
-            .expect("Falied read line");
+            .expect("Failed read line");
 
         let guess: u32 = match guess.trim().parse() {
             Ok(n) => n,
