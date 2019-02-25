@@ -1,4 +1,4 @@
-use std::ops::Add;
+use std::ops::{Add, Mul, Sub};
 
 #[derive(Default, Debug, PartialEq)]
 pub struct Complex {
@@ -37,6 +37,28 @@ impl Add for Complex {
         Complex {
             re: self.re + other.re,
             im: self.im + other.im,
+        }
+    }
+}
+
+impl Sub for Complex {
+    type Output = Self;
+
+    fn sub(self, other: Self) -> Self {
+        Complex {
+            re: self.re - other.re,
+            im: self.im - other.im,
+        }
+    }
+}
+
+impl Mul for Complex {
+    type Output = Self;
+
+    fn mul(self, other: Self) -> Self {
+        Complex {
+            re: self.re * other.re - self.im * other.im,
+            im: self.re * other.im + self.im * other.re,
         }
     }
 }
@@ -89,6 +111,22 @@ mod complex_test_suite {
         assert_eq!(
             Complex { re: 1.0, im: 0.0 } + Complex { re: 2.0, im: 1.0 },
             Complex { re: 3.0, im: 1.0 }
+        );
+    }
+
+    #[test]
+    fn test_sub() {
+        assert_eq!(
+            Complex { re: 1.0, im: 0.0 } - Complex { re: 1.0, im: 1.0 },
+            Complex { re: 0.0, im: -1.0 }
+        );
+    }
+
+    #[test]
+    fn test_mul() {
+        assert_eq!(
+            Complex { re: 1.0, im: 1.0 } * Complex { re: 1.0, im: 1.0 },
+            Complex { re: 0.0, im: 2.0 }
         );
     }
 }
