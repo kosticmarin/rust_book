@@ -31,9 +31,9 @@ impl Complex {
 }
 
 impl Add for Complex {
-    type Output = Complex;
+    type Output = Self;
 
-    fn add(self, other: Complex) -> Complex {
+    fn add(self, other: Self) -> Self {
         Complex {
             re: self.re + other.re,
             im: self.im + other.im,
