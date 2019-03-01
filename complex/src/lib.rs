@@ -76,7 +76,7 @@ impl Div for Complex {
 
 #[cfg(test)]
 mod complex_test_suite {
-    use super::*;
+    use super::Complex;
 
     #[test]
     fn test_default() {
