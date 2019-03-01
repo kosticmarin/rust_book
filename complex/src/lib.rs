@@ -1,4 +1,4 @@
-use std::ops::{Add, Mul, Sub};
+use std::ops::{Add, Mul, Sub, Div};
 
 #[derive(Default, Debug, PartialEq)]
 pub struct Complex {
@@ -62,6 +62,18 @@ impl Mul for Complex {
         }
     }
 }
+
+impl Div for Complex {
+    type Output = Self;
+
+    fn div(self, other: Self) -> Self {
+        let dividor = other.re.powi(2) + other.im.powi(2);
+        let re = (self.re * other.re + self.im * other.im) / dividor;
+        let im = (self.im * other.re - self.re * other.im) / dividor;
+        Complex { re, im }
+    }
+}
+
 #[cfg(test)]
 mod complex_test_suite {
     use super::*;
@@ -128,5 +140,13 @@ mod complex_test_suite {
             Complex { re: 1.0, im: 1.0 } * Complex { re: 1.0, im: 1.0 },
             Complex { re: 0.0, im: 2.0 }
         );
+    }
+
+    #[test]
+    fn test_div() {
+        assert_eq!(
+            Complex { re: 1.0, im: 1.0 } / Complex { re: 1.0, im: 1.0 },
+            Complex { re: 1.0, im: 0.0}
+            );
     }
 }
