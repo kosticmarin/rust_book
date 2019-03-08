@@ -1,4 +1,4 @@
-use std::ops::{Add, Mul, Sub, Div};
+use std::ops::{Add, Div, Mul, Sub};
 
 #[derive(Default, Debug, PartialEq)]
 pub struct Complex {
@@ -41,6 +41,17 @@ impl Add for Complex {
     }
 }
 
+impl Add<f64> for Complex {
+    type Output = Self;
+
+    fn add(self, other: f64) -> Self {
+        Complex {
+            re: self.re + other,
+            im: self.im + other,
+        }
+    }
+}
+
 impl Sub for Complex {
     type Output = Self;
 
@@ -48,6 +59,17 @@ impl Sub for Complex {
         Complex {
             re: self.re - other.re,
             im: self.im - other.im,
+        }
+    }
+}
+
+impl Sub<f64> for Complex {
+    type Output = Self;
+
+    fn sub(self, other: f64) -> Self {
+        Complex {
+            re: self.re - other,
+            im: self.im - other,
         }
     }
 }
@@ -63,6 +85,17 @@ impl Mul for Complex {
     }
 }
 
+impl Mul<f64> for Complex {
+    type Output = Self;
+
+    fn mul(self, other: f64) -> Self {
+        Complex {
+            re: self.re * other,
+            im: self.im * other,
+        }
+    }
+}
+
 impl Div for Complex {
     type Output = Self;
 
@@ -71,6 +104,17 @@ impl Div for Complex {
         let re = (self.re * other.re + self.im * other.im) / dividor;
         let im = (self.im * other.re - self.re * other.im) / dividor;
         Complex { re, im }
+    }
+}
+
+impl Div<f64> for Complex {
+    type Output = Self;
+
+    fn div(self, other: f64) -> Self {
+        Complex {
+            re: self.re / other,
+            im: self.im / other,
+        }
     }
 }
 
@@ -146,7 +190,40 @@ mod complex_test_suite {
     fn test_div() {
         assert_eq!(
             Complex { re: 1.0, im: 1.0 } / Complex { re: 1.0, im: 1.0 },
-            Complex { re: 1.0, im: 0.0}
-            );
+            Complex { re: 1.0, im: 0.0 }
+        );
+    }
+
+    #[test]
+    fn test_f64_add() {
+        let scalar = 1.0;
+        assert_eq!(
+            Complex { re: 1.0, im: 1.0 } + scalar,
+            Complex { re: 2.0, im: 2.0 }
+        );
+    }
+
+    #[test]
+    fn test_f64_sub() {
+        assert_eq!(
+            Complex { re: 1.0, im: 1.0 } - 1.0,
+            Complex { re: 0.0, im: 0.0 }
+        );
+    }
+
+    #[test]
+    fn test_f64_mul() {
+        assert_eq!(
+            Complex { re: 1.0, im: 1.0 } * 2.0,
+            Complex { re: 2.0, im: 2.0 }
+        );
+    }
+
+    #[test]
+    fn test_64_div() {
+        assert_eq!(
+            Complex { re: 2.0, im: 2.0 } / 2.0,
+            Complex { re: 1.0, im: 1.0 }
+        );
     }
 }
