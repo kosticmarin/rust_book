@@ -3,7 +3,7 @@ use std::io::{self, Write};
 fn factorial(n: i32) -> Result<i64, String> {
     if n < 0 || n > 20 {
         Err(format!(
-            "'{}' is not in the valid range. Try a number from range [2, 20]",
+            "'{}' is not in the valid range. Try a number from range [0, 20]",
             n
         ))
     } else {
@@ -26,7 +26,7 @@ fn main() {
             .read_line(&mut line)
             .expect("Error reading from stdin!");
         let trimed_line = line.trim().to_lowercase();
-        if &trimed_line == "exit" {
+        if trimed_line == "exit" {
             break;
         }
         let n: i32 = match trimed_line.parse() {
