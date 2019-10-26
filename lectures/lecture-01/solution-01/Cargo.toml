@@ -8,4 +8,8 @@ edition = "2018"
 name = "factorial"
 path = "src/factorial.rs"
 
+[[bin]]
+name = "rectangle"
+path = "src/rectangle.rs"
+
 [dependencies]
