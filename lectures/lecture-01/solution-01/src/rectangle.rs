@@ -67,25 +67,30 @@ fn parse_positive_f64_from_stdin(
 fn execute_from_stdin() {
     let input = io::stdin();
     let mut output = io::stdout();
+    let width: f64;
     loop {
-        let width = match parse_positive_f64_from_stdin(&input, &mut output, "width") {
+        width = match parse_positive_f64_from_stdin(&input, &mut output, "width") {
             Ok(v) => v,
             Err(e) => {
                 println!("{}", e);
                 continue;
             }
         };
-        let height = match parse_positive_f64_from_stdin(&input, &mut output, "height") {
-            Ok(v) => v,
-            Err(e) => {
-                println!("{}", e);
-                continue;
-            }
-        };
-        let rectangle = Rectangle { width, height };
-        println!("{}", rectangle);
         break;
     }
+    let height: f64;
+    loop {
+        height = match parse_positive_f64_from_stdin(&input, &mut output, "height") {
+            Ok(v) => v,
+            Err(e) => {
+                println!("{}", e);
+                continue;
+            }
+        };
+        break;
+    }
+    let rectangle = Rectangle { width, height };
+    println!("{}", rectangle);
 }
 
 fn execute_from_args(args: Vec<String>) {
