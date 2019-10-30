@@ -3,3 +3,5 @@ RustBook.code-workspace
 **/target/
 **/Cargo.lock
 **/*.rs.bk
+
+.DS_Store
