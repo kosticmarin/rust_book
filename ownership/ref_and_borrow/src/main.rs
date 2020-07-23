@@ -21,7 +21,7 @@ fn change(s: &mut String) {
 }
 
 // won't compile if it is a &String instead return String owned!!
-#[warn(dead_code)]
+#[allow(dead_code)]
 fn dangle() -> String {
     let s = String::from("hello");
     s // we return a reference to the String, s

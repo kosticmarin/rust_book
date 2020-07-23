@@ -1,0 +1,11 @@
+ [workspace]
+
+members = [
+	"collection",
+	"complex",
+	"guessing_game",
+    "ownership/clone_copy",
+    "ownership/ref_and_borrow",
+    "ownership/slice_types",
+	"structs",
+]
