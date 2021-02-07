@@ -1,4 +1,4 @@
- [workspace]
+[workspace]
 
 members = [
 	"collection",
@@ -8,4 +8,5 @@ members = [
     "ownership/ref_and_borrow",
     "ownership/slice_types",
 	"structs",
+ 	"sums",
 ]
