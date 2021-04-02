@@ -9,4 +9,5 @@ members = [
     "ownership/slice_types",
 	"structs",
  	"sums",
+	"combinators",
 ]
