@@ -5,3 +5,5 @@ RustBook.code-workspace
 **/*.rs.bk
 
 .DS_Store
+
+/.vscode
